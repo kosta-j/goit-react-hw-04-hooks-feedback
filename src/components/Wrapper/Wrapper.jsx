@@ -3,11 +3,14 @@ import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
 import Notification from '../Notification/Notification';
 import Section from '../Section/Section';
 import Statistics from '../Statistics/Statistics';
+import s from './Wrapper.module.css';
 
 function Wrapper() {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
+
+  const state = { good, neutral, bad };
 
   const handleGoodUpdate = () => {
     setGood(prev => prev + 1);
@@ -21,8 +24,6 @@ function Wrapper() {
     setNeutral(prev => prev + 1);
   };
 
-  const state = { good, neutral, bad };
-
   const countTotalFeedback = () => {
     return Object.values(state).reduce((acc, el) => acc + el, 0);
   };
@@ -34,19 +35,15 @@ function Wrapper() {
   };
 
   const onLeaveFeedbackHandler = option => {
-    console.log(option);
-
     switch (option) {
       case 'good':
         handleGoodUpdate();
         break;
-
       case 'neutral':
-        handleBadUpdate();
-        break;
-
-      case 'bad':
         handleNeutralUpdate();
+        break;
+      case 'bad':
+        handleBadUpdate();
         break;
       default:
         console.warn('not supported');
@@ -58,7 +55,7 @@ function Wrapper() {
   const options = Object.keys(state);
 
   return (
-    <>
+    <div className={s.wrapper}>
       <Section title="Please leave feedback">
         <FeedbackOptions
           options={options}
@@ -78,7 +75,7 @@ function Wrapper() {
           <Notification message="No feedback given" />
         )}
       </Section>
-    </>
+    </div>
   );
 }
 
