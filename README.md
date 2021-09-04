@@ -1,3 +1,3 @@
 # Feedback widget app
 
-## version 2 (with hooks)
+version 2 (with hooks)
