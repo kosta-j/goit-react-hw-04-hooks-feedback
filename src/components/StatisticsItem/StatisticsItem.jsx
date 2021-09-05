@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import s from './StatisticsItem.module.css';
 
 export default function StatisticsItem({ name, value, percents }) {
@@ -7,3 +8,9 @@ export default function StatisticsItem({ name, value, percents }) {
     </div>
   );
 }
+
+StatisticsItem.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.number,
+  percents: PropTypes.bool,
+};

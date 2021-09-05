@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import s from './FeedbackOptions.module.css';
 
@@ -12,5 +13,10 @@ function FeedbackOptions({ options, onLeaveFeedback }) {
     </ul>
   );
 }
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.array,
+  onLeaveFeedback: PropTypes.func,
+};
 
 export default FeedbackOptions;
